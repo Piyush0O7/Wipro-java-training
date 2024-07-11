@@ -1,0 +1,94 @@
+import java.util.Scanner;
+
+interface LibraryItem {
+    void displayDetails();
+    void checkOut(String yes);
+}
+
+class Book implements LibraryItem {
+    String title;
+    String author;
+    boolean isCheckedOut;
+
+    Book(String bookTitle, String bookAuthor) {
+        title = bookTitle;
+        author = bookAuthor;
+        isCheckedOut = false;
+    }
+
+    public void displayDetails() {
+        System.out.println("Book Title: " + title);
+        System.out.println("Author: " + author);
+        System.out.println("Checked Out: " + (isCheckedOut ? "Yes" : "No"));
+    }
+
+    public void checkOut(String yes) {
+        if (!isCheckedOut) {
+            isCheckedOut = true;
+            System.out.println("The book \"" + title + "\" has been checked out.");
+        } else {
+            System.out.println("The book \"" + title + "\" is already checked out.");
+        }
+    }
+}
+
+class DVD implements LibraryItem {
+    String title;
+    String director;
+    boolean isCheckedOut;
+
+    DVD(String dvdTitle, String dvdDirector) {
+        title = dvdTitle;
+        director = dvdDirector;
+        isCheckedOut = false;
+    }
+
+    public void displayDetails() {
+        System.out.println("DVD Title: " + title);
+        System.out.println("Director: " + director);
+        System.out.println("Checked Out: " + (isCheckedOut ? "Yes" : "No"));
+    }
+
+    public void checkOut(String yes) {
+        if (!isCheckedOut) {
+            isCheckedOut = true;
+            System.out.println("The DVD \"" + title + "\" has been checked out.");
+        } else {
+            System.out.println("The DVD \"" + title + "\" is already checked out.");
+        }
+    }
+}
+
+public class management {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        
+        System.out.print("Bhagwat Geeta");
+        String bookTitle = scanner.nextLine();
+        System.out.print("Veda Vyas");
+        String bookAuthor = scanner.nextLine();
+        Book book1 = new Book("Bhagwat Geeta", "Veda Vyas");
+
+        
+        System.out.print("intersteller");
+        String dvdTitle = scanner.nextLine();
+        System.out.print("christopher Nolan");
+        String dvdDirector = scanner.nextLine();
+        DVD dvd1 = new DVD("intersteller", "christopher nolan");
+
+      
+        
+        scanner.close();
+
+        System.out.println("Bhagwat Geeta ");
+        book1.displayDetails();
+        book1.checkOut("yes");
+        book1.displayDetails();
+
+        System.out.println("intersteller ");
+        dvd1.displayDetails();
+        dvd1.checkOut("yes");
+        dvd1.displayDetails();
+    }
+}
